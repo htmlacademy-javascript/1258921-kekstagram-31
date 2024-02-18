@@ -1,7 +1,5 @@
 const stringLength = (string, maxLength) => {
-  // Почему ругается на тернарный оператор?
-  // string <= maxLength ? true : false;
-  if (string <= maxLength) {
+  if (string.length <= maxLength) {
     return true;
   }
   return false;
@@ -17,7 +15,7 @@ const palindrome = (string) => {
   }
 
   if (string === resultString) {
-    return true;
+    return string === resultString; //Явно не так, но до другого я не додумался.
   }
 
   return false;
@@ -41,10 +39,9 @@ const findNumbers = (string) => {
       return number;
     }
   }
-  // Можно ли как-нибудь оптимизировать эту функцию?
 };
 
 
-stringLength('stack', 4);
+stringLength('adfgd', 4);
 palindrome('aga bgb Aga');
 findNumbers('a2ad0kk2ld2');
