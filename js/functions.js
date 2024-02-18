@@ -29,19 +29,12 @@ const findNumbers = (string) => {
   for (let i = 0; i < string.length; i++) {
     if (Number.isInteger(parseInt(string[i], 10))) {
       number += string[i];
-
-      if (i === string.length - 1) {
-        return number;
-      }
-    }
-
-    if (i === string.length - 1) {
-      return number;
     }
   }
+  return number;
 };
 
 
 stringLength('adfgd', 4);
 palindrome('aga bgb Aga');
-findNumbers('a2ad0kk2ld2');
+findNumbers('a2ad0k0.5k2ld2');
