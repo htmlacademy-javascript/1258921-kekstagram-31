@@ -1,6 +1,6 @@
 const checkLength = (aString, maxLength) => aString.length <= maxLength;
 
-const palindrome = (string) => {
+const isPalindrome = (string) => {
   string = string.replaceAll(' ','');
   string = string.toLowerCase();
   let resultString = '';
@@ -21,10 +21,10 @@ const findNumbers = (string) => {
       number += string[i];
     }
   }
-  return typeof(+ number);
+  return + number;
 };
 
 
 checkLength('adfad', 6);
-palindrome('aga bgb Aga');
+isPalindrome('aga bgb Aga');
 findNumbers('a2ad0k0.5k2ld2');
