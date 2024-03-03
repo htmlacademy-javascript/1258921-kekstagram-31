@@ -1,3 +1,5 @@
+export {getRandomIntegerGenerator};
+
 const checkLength = (aString, maxLength) => aString.length <= maxLength;
 
 const isPalindrome = (string) => {
@@ -28,3 +30,13 @@ const findNumbers = (string) => {
 checkLength('adfad', 6);
 isPalindrome('aga bgb Aga');
 findNumbers('a2ad0k0.5k2ld2');
+
+
+//random number v diapasone
+function getRandomIntegerGenerator(min, max) {
+  const lower = Math.ceil(Math.min(Math.abs(min), Math.abs(max)));
+  const upper = Math.floor(Math.max(Math.abs(min), Math.abs(max)));
+  const result = Math.random() * (upper - lower + 1) + lower;
+
+  return Math.floor(result);
+}
