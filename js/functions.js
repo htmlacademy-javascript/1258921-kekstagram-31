@@ -1,9 +1,7 @@
-export {getRandomIntegerGenerator};
-
 const checkLength = (aString, maxLength) => aString.length <= maxLength;
 
 const isPalindrome = (string) => {
-  string = string.replaceAll(' ','');
+  string = string.replaceAll(' ', '');
   string = string.toLowerCase();
   let resultString = '';
 
@@ -40,3 +38,27 @@ function getRandomIntegerGenerator(min, max) {
 
   return Math.floor(result);
 }
+
+//po poryadku
+function createConsecutiveIntegerGenerator(min, max) {
+  const previousValues = [];
+
+  return function () {
+    let counter = min;
+    let currentValue = counter++;
+    if (previousValues.length >= (max - min + 1)) {
+      // console.error('Перебраны все числа из диапазона от ' + min + ' до ' + max);
+      return null;
+    }
+    while (previousValues.includes(currentValue)) {
+      currentValue++;
+    }
+    previousValues.push(currentValue);
+    return currentValue;
+  };
+}
+
+const getRandomArrayElement = (array) => array[getRandomIntegerGenerator(0, array.length - 1)];
+
+
+export { getRandomIntegerGenerator, createConsecutiveIntegerGenerator, getRandomArrayElement};

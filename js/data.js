@@ -1,5 +1,5 @@
+import { getRandomIntegerGenerator, createConsecutiveIntegerGenerator, getRandomArrayElement} from './functions.js';
 
-import {getRandomIntegerGenerator} from './functions.js';
 
 const NAMES = [
   'Иван',
@@ -36,27 +36,6 @@ const COMMENTS = [
   'Как можно было поймать такой неудачный момент?!'
 ];
 
-
-//po poryadku
-function createConsecutiveIntegerGenerator(min, max) {
-  const previousValues = [];
-
-  return function () {
-    let counter = min;
-    let currentValue = counter++;
-    if (previousValues.length >= (max - min + 1)) {
-      console.error('Перебраны все числа из диапазона от ' + min + ' до ' + max);
-      return null;
-    }
-    while (previousValues.includes(currentValue)) {
-      currentValue++;
-    }
-    previousValues.push(currentValue);
-    return currentValue;
-  };
-}
-
-const getRandomArrayElement = (array) => array[getRandomIntegerGenerator(0, array.length - 1)];
 
 const generatePhotoId = createConsecutiveIntegerGenerator(1, 25);
 const generatePhotoUrl = createConsecutiveIntegerGenerator(1, 25);
@@ -100,4 +79,4 @@ const createPhoto = () => ({
 
 const photosArray = Array.from({length: 25}, createPhoto);
 
-console.log(photosArray);
+export {photosArray};
