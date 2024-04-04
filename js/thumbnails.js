@@ -1,16 +1,9 @@
-// import {createPhoto} from './data.js';
-import {photosArray} from './main.js';
-// const userDialog = document.querySelector('.setup');
-// userDialog.classList.remove('hidden');
-
-// userDialog.querySelector('.setup-similar').classList.remove('hidden');
+import {photosArray} from './data.js';
 
 const picturesSection = document.querySelector('.pictures');
 
 const pictureTemplate = document.querySelector('#picture').content.querySelector('.picture');
 
-// const picture = pictureTemplate.cloneNode(true);
-// picturesSection.appendChild(picture);
 const newPicture = photosArray;
 
 const pictureFragment = document.createDocumentFragment();
@@ -25,5 +18,3 @@ newPicture.forEach((photoData) => {
 });
 
 picturesSection.appendChild(pictureFragment);
-
-// export {picturesSection, pictureFragment};
