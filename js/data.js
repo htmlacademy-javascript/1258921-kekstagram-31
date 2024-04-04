@@ -76,5 +76,6 @@ const createPhoto = () => ({
   comments: getComments(),
 });
 
+const photosArray = Array.from({length: 25}, createPhoto);
 
-export {createPhoto};
+export {photosArray};
