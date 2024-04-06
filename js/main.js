@@ -1,2 +1,2 @@
 import './data.js';
-import './thumbnails.js';
+import './imageOpen.js';
