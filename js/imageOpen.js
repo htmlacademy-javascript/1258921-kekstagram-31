@@ -6,6 +6,17 @@ const bigPicture = document.querySelector('.big-picture');
 const bigPictureCancel = document.querySelector('.big-picture__cancel');
 const pictures = document.querySelectorAll('.picture');
 
+const onDocumentKeydown = (evt) => {
+  if (isEscapeKey(evt)) {
+    evt.preventDefault();
+    bigPicture.classList.add('hidden');
+  }
+};
+
+const addBigPictureClass = () => {
+  bigPicture.classList.add('hidden');
+  removeBigPictureListeners();
+};
 
 for (let i = 0; i < pictures.length; i++) {
   pictures[i].dataset.id = i + 1;
@@ -25,6 +36,25 @@ function makeNewComment(array) {
   });
 }
 
+function addBigPictureListeners() {
+  bigPicture.classList.remove('hidden');
+
+  document.addEventListener('keydown', onDocumentKeydown);
+
+  bigPictureCancel.addEventListener('click', addBigPictureClass);
+
+  document.querySelector('.social__comment-count').classList.add('hidden');
+  document.querySelector('.comments-loader').classList.add('hidden');
+  document.querySelector('body').classList.add('modal-open');
+}
+
+function removeBigPictureListeners () {
+  bigPictureCancel.removeEventListener('click', addBigPictureClass);
+  document.removeEventListener('keydown', onDocumentKeydown);
+  document.querySelector('body').classList.remove('modal-open');
+}
+
+
 pictures.forEach((element) =>
   element.addEventListener('click', () => {
 
@@ -38,40 +68,6 @@ pictures.forEach((element) =>
     commentsContainer.appendChild(commentFragment);
     document.querySelector('.social__comment-shown-count').textContent = document.querySelector('.social__comments').children.length;
     document.querySelector('.social__caption').textContent = currentObject.description;
-    openPicture();
+    addBigPictureListeners();
   })
 );
-
-pictures.forEach((element) =>
-  element.addEventListener('click', () => {
-    closePicture();
-  })
-);
-
-function openPicture() {
-  bigPicture.classList.remove('hidden');
-
-  document.addEventListener('keydown', (evt) => {
-    if (isEscapeKey(evt)) {
-      evt.preventDefault();
-      bigPicture.classList.add('hidden');
-    }
-  });
-  document.querySelector('.social__comment-count').classList.add('hidden');
-  document.querySelector('.comments-loader').classList.add('hidden');
-  document.querySelector('body').classList.add('modal-open');
-}
-
-
-function closePicture() {
-  bigPictureCancel.addEventListener('click', () => {
-    bigPicture.classList.add('hidden');
-  });
-
-  bigPictureCancel.addEventListener('keydown', (evt) => {
-    if (isEnterKey(evt)) {
-      bigPicture.classList.add('hidden');
-    }
-  });
-  document.querySelector('body').classList.remove('modal-open');
-}
