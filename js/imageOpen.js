@@ -1,4 +1,4 @@
-import { isEscapeKey, isEnterKey } from './functions.js';
+import { isEscapeKey } from './functions.js';
 import { photosArray } from './data.js';
 import './thumbnails.js';
 
@@ -17,10 +17,6 @@ const addBigPictureClass = () => {
   bigPicture.classList.add('hidden');
   removeBigPictureListeners();
 };
-
-for (let i = 0; i < pictures.length; i++) {
-  pictures[i].dataset.id = i + 1;
-}
 
 const commentFragment = document.createDocumentFragment();
 const commentsContainer = document.querySelector('.social__comments');
