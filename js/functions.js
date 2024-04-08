@@ -60,5 +60,7 @@ function createConsecutiveIntegerGenerator(min, max) {
 
 const getRandomArrayElement = (array) => array[getRandomIntegerGenerator(0, array.length - 1)];
 
+const isEscapeKey = (evt) => evt.key === 'Escape';
+const isEnterKey = (evt) => evt.key === 'Enter';
 
-export { getRandomIntegerGenerator, createConsecutiveIntegerGenerator, getRandomArrayElement};
+export { getRandomIntegerGenerator, createConsecutiveIntegerGenerator, getRandomArrayElement, isEscapeKey, isEnterKey};
